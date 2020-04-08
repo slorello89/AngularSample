@@ -1,0 +1,15 @@
+<div [ngClass]="{'publishing': publishing}" #publisherDiv></div>
+<div class="subscriberDiv">
+  <ng-template class="subscriber-host"></ng-template>
+</div>
+
+<form [formGroup]="joinRoomForm" (ngSubmit)="onSubmit(joinRoomForm.value)">  
+  <div>    
+    <input placeholder="room name" id="roomName" type="text" formControlName="roomName">
+  </div>
+  <button class="button" type="submit">Join</button>
+</form>
+
+<span style="word-wrap: break-word;"><p style="font-size: 8;">Session: {{ sessionId }}</p></span>
+
+<span style="word-wrap: break-word;"><p style="font-size: 8;">Token: {{ token }}</p></span>
