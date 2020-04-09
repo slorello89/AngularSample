@@ -26,6 +26,9 @@ namespace OpentokAngular.Controllers
         [HttpPost]
         public IActionResult GetSession([FromBody]RoomForm roomForm)
         {
+            var apiKey = int.Parse(_Configuration["ApiKey"]);
+            var apiSecret = _Configuration["ApiSecret"];
+            var opentok = new OpenTok(apiKey, apiSecret);
             var roomName = roomForm.RoomName;
             string sessionId;
             string token;
@@ -35,13 +38,12 @@ namespace OpentokAngular.Controllers
                 if (room != null)
                 {
                     sessionId = room.SessionId;
-                    token = room.Token;
+                    token = opentok.GenerateToken(sessionId);
+                    room.Token = token;
+                    db.SaveChanges();
                 }
                 else
-                {
-                    var apiKey = int.Parse(_Configuration["ApiKey"]);
-                    var apiSecret = _Configuration["ApiSecret"];
-                    var opentok = new OpenTok(apiKey, apiSecret);
+                {                    
                     var session = opentok.CreateSession();
                     sessionId = session.Id;
                     token = opentok.GenerateToken(sessionId);
