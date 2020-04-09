@@ -5,13 +5,13 @@ import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import config from '../../config';
 import { SubscriberComponent } from '../subscriber/subscriber.component';
-import { SubscriberDirective } from '../subscriber.directive';
+
 @Component({
     selector: 'app-publisher',    
     templateUrl: './publisher.component.html'
 })
 export class PublisherComponent implements AfterViewInit {
-    @ViewChild(SubscriberDirective, { static: true }) subscriberHost: SubscriberDirective;
+    @ViewChild('subscriberHost', { read: ViewContainerRef, static: true }) subscriberHost;
     @ViewChild('publisherDiv', { static: false }) publisherDiv: ElementRef;    
     //@ViewChild('subscribersDiv', { static: false }) subscribersDiv: ElementRef;
     session: OT.Session;
@@ -64,11 +64,11 @@ export class PublisherComponent implements AfterViewInit {
         }
     }
 
-    onStreamCreated = function(stream) {
+    onStreamCreated = function (stream) {        
         const componentFactory = this.componentFactoryResolver
             .resolveComponentFactory(SubscriberComponent);
 
-        const viewContainerRef  = this.subscriberHost.viewContainerRef;
+        const viewContainerRef  = this.subscriberHost;
         const componentRef = viewContainerRef.createComponent(componentFactory);
         (<SubscriberComponent>componentRef.instance).stream = stream;
         (<SubscriberComponent>componentRef.instance).session = this.session;

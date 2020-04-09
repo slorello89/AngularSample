@@ -1,7 +1,8 @@
 <div [ngClass]="{'publishing': publishing}" #publisherDiv></div>
-<div class="subscriberDiv">
-  <ng-template class="subscriber-host"></ng-template>
+<div class="subscriberContainer">
+  <ng-template #subscriberHost></ng-template>
 </div>
+
 
 <form [formGroup]="joinRoomForm" (ngSubmit)="onSubmit(joinRoomForm.value)">  
   <div>    

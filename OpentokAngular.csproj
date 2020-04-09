@@ -33,9 +33,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\join\join.component.ts" />
     <None Remove="ClientApp\src\app\opentok.ts" />
     <None Remove="ClientApp\src\app\publisher\publisher.component.ts" />
+    <None Remove="ClientApp\src\app\StateService.ts" />
+    <None Remove="ClientApp\src\app\subscriber.directive.ts" />
     <None Remove="ClientApp\src\app\subscriber\subscriber.component.ts" />
+    <None Remove="ClientApp\src\app\video\video.component.ts" />
     <None Remove="ClientApp\src\config.ts" />
     <None Remove="ClientApp\src\tsconfig.app.json" />
     <None Remove="ClientApp\tsconfig.json" />
@@ -47,9 +51,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\join\join.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\opentok.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\publisher\publisher.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\stateService.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\subscriber.directive.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\subscriber\subscriber.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\video\video.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\config.ts" />
   </ItemGroup>
 
